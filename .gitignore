@@ -73,3 +73,6 @@ local.settings.json
 
 # Specific backup created during import
 med-archive-git-backup-*.tar.gz
+
+# Ignore generated admin UI assets
+med-archive/.adminjs/
