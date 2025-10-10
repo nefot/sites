@@ -1,4 +1,3 @@
-# ...existing code...
 # Node
 node_modules/
 
@@ -68,3 +67,9 @@ local.settings.json
 .AppleDouble
 .LSOverride
 
+# Ignore backup archives created by scripts
+*.tar.gz
+*.backup
+
+# Specific backup created during import
+med-archive-git-backup-*.tar.gz
