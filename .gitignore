@@ -1,0 +1,70 @@
+# ...existing code...
+# Node
+node_modules/
+
+# npm/yarn/pnpm lockfiles (uncomment if you want to ignore specific lockfile)
+# package-lock.json
+# yarn.lock
+# pnpm-lock.yaml
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+
+# Env files
+.env
+.env.*
+
+# Build outputs
+dist/
+build/
+.vite/
+public/build/
+
+# Frontend and backend specific
+/frontend/dist/
+/frontend/node_modules/
+/med-archive/dist/
+/med-archive/node_modules/
+
+# TypeScript
+*.tsbuildinfo
+
+# Coverage
+coverage/
+.nyc_output/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+*.sublime-workspace
+*.sublime-project
+
+# Editor temporary files
+*~
+*.swp
+
+# Temp
+tmp/
+temp/
+
+# Misc
+*.tgz
+*.zip
+
+# Keep track of local-only folders
+local.settings.json
+
+# Optional: ignore local IDE settings
+/.idea/
+
+# macOS
+.AppleDouble
+.LSOverride
+
