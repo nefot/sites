@@ -11,16 +11,17 @@
     cursor: pointer;
     transition: background 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
     outline: none;
-    margin: 4px 0;
+    margin: 4px 20px;
 }
 
 .custom-btn:hover,
 .custom-btn:focus {
     background: #f0f7ff;
+    color:#333333;
 
 }
 
-.custom-btn:active {
+.custom-btn:active, .active {
     background: linear-gradient(90deg, #43ea7c 0%, #40b601 100%);
     color: #fff;
     border: none;
