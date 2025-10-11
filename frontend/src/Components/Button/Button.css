@@ -1,0 +1,27 @@
+.custom-btn {
+    font-family: 'Montserrat', system-ui, Avenir, Helvetica, Arial, sans-serif;
+    font-size: 1rem;
+    font-weight: 500;
+    background: #fff;
+    color: #1fec00;
+    border: 1px solid #1fec00;
+    border-radius: 15px;
+    padding: 0.6em 1.4em;
+    box-shadow: 0 2px 8px rgba(25, 118, 210, 0.08);
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+    margin: 4px 0;
+}
+
+.custom-btn:hover,
+.custom-btn:focus {
+    background: #f0f7ff;
+
+}
+
+.custom-btn:active {
+    background: linear-gradient(90deg, #43ea7c 0%, #40b601 100%);
+    color: #fff;
+    border: none;
+}
