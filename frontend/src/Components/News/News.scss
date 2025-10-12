@@ -1,0 +1,130 @@
+@import '../../variables';
+
+.flex-justify-space-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.margin-10 {
+  margin: 10px;
+}
+
+.chapter-title {
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Source Serif Pro', serif !important;
+    text-align: justify;
+    font-weight: 300;
+    font-size: 2rem;
+    color: $color-card-text;
+    margin: 0;
+  }
+
+  button {
+    background-color: transparent;
+    border: none;
+    color: $color-card-text;
+    box-shadow: none;
+    font-size: 13.33px;
+
+    &:hover {
+      cursor: pointer;
+      background-color: transparent;
+    }
+
+    &:active {
+      color: $color-card2;
+      background-color: transparent;
+    }
+
+    &:focus {
+      background-color: transparent;
+    }
+  }
+
+}
+
+.news-cards {
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+
+
+  transition: flex-direction 0.7s cubic-bezier(0.4, 0, 0.2, 1), gap 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+
+  .news-card {
+
+    width: 45%;
+
+    &-subscription {
+      display: flex;
+      width: 100%;
+      justify-content: space-between;
+    }
+
+    &_tags {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      object-fit: cover;
+      flex-wrap: nowrap;
+      gap: 10px;
+    }
+
+
+    .tag {
+      padding: $tag-padding;
+      border: 1px solid $color-tag-border;
+      border-radius: $tag-border-radius;
+      font-size: 13.33px;
+      font-weight: 500;
+      margin: 0;
+      color: $color-tag-text;
+
+
+      &:hover {
+        background-color: $color-tag-hover-bg;
+        border: 1px solid $color-tag-border-hover;
+        cursor: pointer;
+      }
+
+      &:active {
+        background-color: $color-card2;
+        border: 1px solid $color-tag-border-hover;
+        cursor: pointer;
+        color: white;
+      }
+
+
+    }
+
+
+    p {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 500;
+      margin-bottom: auto;
+    }
+
+  }
+
+  @media (max-width: 1100px) {
+    flex-direction: column;
+    gap: 30px;
+    align-items: stretch;
+    .news-card {
+      width: -webkit-fill-available;
+      max-width: -webkit-fill-available;
+      margin: 0 auto;
+      opacity: 0.97;
+      gap: 15px;
+      transform: translateY(50px);
+
+      img {
+        max-height: 400px;
+      }
+    }
+
+  }
+}

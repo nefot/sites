@@ -1,23 +1,21 @@
-import './Button.css';
+import './Button.scss';
 
 import React from 'react';
 
-export default function Button({ children, onClick, handleMouseEnter, handleMouseLeave, active }: {
-  children: React.ReactNode,
-  onClick?: () => void,
-  handleMouseEnter?: () => void,
-  handleMouseLeave?: () => void,
-  active?: boolean
+export default function Button({children, onClick, active, className}: {
+    children: React.ReactNode,
+    onClick?: () => void,
+    active?: boolean,
+    className?: string
 }) {
-  return (
-    <button
-      className={`custom-btn ${active ? 'active' : ''}`}
-      onClick={onClick}
-      onMouseEnter={handleMouseEnter}
-      onMouseLeave={handleMouseLeave}
-      onDoubleClick={() => alert('Button double-clicked!')}
-    >
-      {children}
-    </button>
-  );
+    return (
+        <button
+            className={` ${className? className + ' custom-btn' : 'custom-btn' }  ${active ? 'active' : ''}`}
+            onClick={onClick}
+
+
+        >
+            {children}
+        </button>
+    );
 }

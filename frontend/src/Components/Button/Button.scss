@@ -1,0 +1,41 @@
+@import '../../variables';
+
+.custom-btn {
+  font-family: 'Montserrat', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  background: $color-card-bg;
+  color: $color-card2;
+  border: 1px solid $color-card2;
+  border-radius: $btn-border-radius;
+  padding: $btn-padding;
+  box-shadow: $btn-shadow;
+  cursor: pointer;
+  width: fit-content;
+  height: min-content;
+  transition: background 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+  //margin: $btn-margin;
+}
+
+.width-100 {
+  width: 100%;
+  margin: 0;
+}
+
+
+.custom-btn:hover{
+  background: $color-tag-hover-bg;
+  color: $color-card2;
+}
+
+.custom-btn.active:hover {
+  background: $color-tag-active-hover;
+  color: $color-btn-active-text;
+}
+
+.custom-btn:active, .active {
+  background: $color-card2;
+  color: $color-btn-active-text;
+  //border: none;
+}

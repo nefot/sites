@@ -1,0 +1,146 @@
+@import '../../variables';
+
+.landing-window {
+  height: 100vh;
+  background: #282828;
+
+  //background:
+  position: absolute;
+  top: 0;
+  //background-color: #282828;
+  //background: #282828 ;
+  //opacity: 0.8;
+
+
+  //background: radial-gradient(circle, transparent 20%, $color-bg 20%, $color-bg 80%, transparent 80%, transparent), radial-gradient(circle, transparent 20%, $color-bg 20%, $color-bg 80%, transparent 80%, transparent) 25px 25px, linear-gradient($plus-color 2px, transparent 2px) 0 -1px, linear-gradient(90deg, $plus-color 2px, $color-bg  2px) -1px 0;
+  background-size: 50px 50px, 50px 50px, 25px 25px, 25px 25px;
+  //z-index: -100;
+  width: -webkit-fill-available;
+
+  &__content {
+    position: relative;
+    height: -webkit-fill-available;
+    gap: 133px;
+    width: 100%;
+    padding: $header-height 50px calc(100vh - $landing-cards-padding) 50px;
+
+    display: flex;
+    align-items: center; /* по вертикали */
+    justify-content: center;
+
+    h1, h2, h3, h4, h5, h6, p, span, a, li, div, em {
+      color: #fff;
+    }
+  }
+
+  &__image {
+    position: relative;
+    width: auto;
+    top: 100px;
+    height: calc(100vh);
+
+    //box-shadow: 0 0 63px 0 rgba(43, 208, 155, 0.16), inset 75px 4px 66px 0 rgba(255, 255, 255, 0.14);
+  }
+
+  &__text-block {
+    height: min-content;
+    margin: 0; /* сбрасываем auto, flex сам центрирует */
+  }
+
+  &__quote {
+
+    //line-height: 145%;
+    //margin-bottom: 50px;
+
+  }
+
+  &__title {
+    max-width: 600px;
+    font-family: var(--third-family), serif;
+    font-weight: 600;
+    max-width: 330.71px;
+    font-size: 40px;
+    height: fit-content;
+    color: #fff;
+    text-align: left;
+  }
+
+  &__author {
+    width: -webkit-fill-available;
+    text-align: left;
+    margin: auto;
+    font-family: var(--third-family), sans-serif;
+    font-style: italic;
+    font-weight: 400;
+    font-size: 24px;
+    color: #fff;
+
+  }
+
+  &__decor-left {
+    display: none;
+    position: absolute;
+    top: 177.83px;
+    margin: 0;
+    left: 111px;
+    height: fit-content;
+    width: fit-content;
+    font-family: var(--third-family);
+    font-weight: 300;
+    font-size: 96px;
+    color: #fff;
+  }
+
+  &__decor-right {
+    display: none;
+
+    position: absolute;
+
+  }
+}
+
+
+@import 'https://fonts.googleapis.com/css?family=Playfair+Display:400,700i,900i';
+
+$green: #7ceaa4;
+$purple: #3b3d54;
+
+*{
+  box-sizing: border-box;
+}
+
+
+
+.wrap{
+  perspective-origin: 50% 50%;
+}
+
+
+
+.svg{
+  stroke:$green;
+  position:absolute;
+  bottom: -100vh;
+  transform-style: preserve-3d;
+}
+
+$total: 100;
+@for $i from 1 through $total {
+  $scale:random(2) - .4;
+
+  .svg:nth-child(#{$i}){
+    left:random(120) * 1% - 20;
+    animation: raise#{$i} 6 + random(15) +s linear infinite;
+    animation-delay:random(5) - 5 + s;
+    transform: scale(.3 * $i - .6) rotate(random(360) + deg);
+    z-index: $i - 7;
+    filter: blur($i - 6 + px);
+
+    @keyframes raise#{$i} {
+      to{
+        bottom:150vh;
+        transform: scale(.3 * $i - .6) rotate(random(360) + deg);
+      }
+    }
+  }
+}

@@ -1,0 +1,125 @@
+// Переменные
+@import '../../variables';
+
+
+
+.header {
+
+  width: -webkit-fill-available;
+  height: $header-height;
+  background-color: transparent;
+  position: relative;
+  z-index: 100;
+  color: var(--header-color, #fff);
+  // Основной контейнер хедера
+  //margin-bott/om: 10px;
+  align-items: center;
+
+  &__visibiliytyt-helper {
+
+    display: flex;
+    justify-content: space-between;
+    height: -webkit-fill-available;
+    width: 1024px;
+    padding-left: 67px;
+    padding-right: 67px;
+    margin: auto;
+    max-width: -webkit-fill-available;
+    align-items: center;
+  }
+
+  &__container {
+
+    // ...
+  }
+
+  // Логотип
+  &__logo {
+    font-family: var(--third-family);
+    font-weight: 600;
+    font-size: 30px;
+    color: var(--header-logo-color, #fff);
+
+  }
+
+  // Навигация
+  &__nav {
+
+    // ...
+    &-list {
+
+      justify-content: space-between;
+      display: flex;
+      gap: 44px;
+
+      button {
+        background: transparent;
+
+        width: -webkit-fill-available;
+        border: 2px solid transparent;
+        height: -webkit-fill-available;
+        opacity: 60%;
+        text-decoration: none;
+        font-weight: 400;
+        font-size: 16px;
+        text-align: center;
+        color: var(--header-link-color, #fff);
+        transition: 0.3s;
+
+
+
+      }
+      :hover{
+        opacity: 100% !important;
+        transition: 0.3s;
+      }
+
+       .--active {
+            opacity: 100%;
+            border-bottom: 2px solid var(--header-link-color, #fff);
+            padding-bottom: 4px;
+            transition: all 0.3s ease;
+        }
+    }
+
+
+    &-item {
+      // ...
+    }
+
+    &-link {
+      // ...
+    }
+  }
+
+  // Кнопки
+  &__actions {
+    // ...
+    &-button {
+      // ...
+    }
+  }
+
+  // Аватар пользователя/иконка профиля
+  &__profile {
+    // ...
+  }
+
+  // Модификатор для белой темы
+  &--light {
+    --header-bg: #fff;
+    --header-color: #222;
+    --header-logo-color: #222;
+    --header-link-color: #222;
+    // Можно добавить другие переменные для светлой темы
+  }
+
+  // Адаптивность
+  @media (max-width: 1024px) {
+    // ...
+  }
+  @media (max-width: 768px) {
+    // ...
+
+  }
+}
