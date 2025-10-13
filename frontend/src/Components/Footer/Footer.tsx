@@ -18,38 +18,25 @@ const footerLink = [
   { name: 'Анонсы', href: '/' },
 ];
 
+const sectionCount = 3;
+const sections: Array<typeof footerLink> = Array.from({ length: sectionCount }, () => []);
+footerLink.forEach((item, idx) => {
+  sections[idx % sectionCount].push(item);
+});
 
 export default function Footer() {
   return (
-    <>
-      <div className="footer">
-        <div className="footer-container">
-          <h1>MedArchive</h1>
-          <div className="footer-section">
-            <div className=""><a>{footerLink[0]['name']}</a></div>
-            <div className=""><a>{footerLink[1]['name']}</a></div>
-            <div className=""><a>{footerLink[2]['name']}</a></div>
-            <div className=""><a>{footerLink[3]['name']}</a></div>
-            <div className=""><a>{footerLink[4]['name']}</a></div>
+    <div className="footer">
+      <div className="footer-container">
+        <h1>MedArchive</h1>
+        {sections.map((section, i) => (
+          <div className="footer-section" key={i}>
+            {section.map((link, j) => (
+              <a key={j} href={link.href}>{link.name}</a>
+            ))}
           </div>
-          <div className="footer-section">
-            <a>{footerLink[0]['name']}</a>
-            <a>{footerLink[1]['name']}</a>
-            <a>{footerLink[2]['name']}</a>
-            <a>{footerLink[3]['name']}</a>
-            <a>{footerLink[4]['name']}</a>
-          </div>
-          <div className="footer-section">
-            <a>{footerLink[0]['name']}</a>
-            <a>{footerLink[1]['name']}</a>
-            <a>{footerLink[2]['name']}</a>
-            <a>{footerLink[3]['name']}</a>
-            <a>{footerLink[4]['name']}</a>
-          </div>
-
-
-        </div>
+        ))}
       </div>
-    </>
+    </div>
   );
 }

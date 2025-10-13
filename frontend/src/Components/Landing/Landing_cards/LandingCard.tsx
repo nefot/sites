@@ -1,6 +1,6 @@
-import { data_landing_cards } from '../datas/LandingCards.ts';
+import { data_landing_cards } from '../../datas/LandingCards.ts';
 import './LandingCards.scss';
-import Button from "../Button/Button.tsx";
+import Button from "../../Button/Button.tsx";
 // import Button from '../UI/Button'; // Раскомментируйте, если есть компонент Button
 
 

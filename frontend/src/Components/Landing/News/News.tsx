@@ -1,8 +1,8 @@
 import './News.scss';
 import React from "react";
 import {NewsCardSubscription} from "./NewsCardSubscription.tsx";
-import Button from "../Button/Button.tsx";
-import {DataNews} from "../datas/dataNews.ts";
+import Button from "../../Button/Button.tsx";
+import {DataNews} from "../../datas/dataNews.ts";
 
 export function Tag({children}: { children: React.ReactNode }) {
     return <Button className="tag">#{children}</Button>;

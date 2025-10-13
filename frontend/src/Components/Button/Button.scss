@@ -1,12 +1,12 @@
-@import '../../variables';
+@use '../../variables' as *;
 
 .custom-btn {
   font-family: 'Montserrat', system-ui, Avenir, Helvetica, Arial, sans-serif;
   font-size: 1rem;
   font-weight: 500;
   background: $color-card-bg;
-  color: $color-card2;
-  border: 1px solid $color-card2;
+  color: $color-green;
+  border: 1px solid $color-green;
   border-radius: $btn-border-radius;
   padding: $btn-padding;
   box-shadow: $btn-shadow;
@@ -26,16 +26,16 @@
 
 .custom-btn:hover{
   background: $color-tag-hover-bg;
-  color: $color-card2;
+  color: $color-green;
 }
 
 .custom-btn.active:hover {
   background: $color-tag-active-hover;
-  color: $color-btn-active-text;
+  color: $color-white;
 }
 
 .custom-btn:active, .active {
-  background: $color-card2;
-  color: $color-btn-active-text;
+  background: $color-green;
+  color: $color-white;
   //border: none;
 }

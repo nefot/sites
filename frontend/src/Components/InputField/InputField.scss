@@ -1,8 +1,9 @@
 /* InputField.scss */
+@import '../../variables';
 
 .input-field {
   padding: 8px 12px;
-  border: 1px solid #ccc;
+  border: 1px solid $color-gray-light;
   border-radius: 4px;
   font-size: 16px;
   outline: none;
@@ -10,6 +11,5 @@
 }
 
 .input-field:focus {
-  border-color: #007bff;
+  border-color: $color-blue-accent;
 }
-

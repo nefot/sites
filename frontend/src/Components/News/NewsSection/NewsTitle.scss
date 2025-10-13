@@ -1,0 +1,79 @@
+@import "../../../_variables.scss";
+
+
+.news-title {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  width: $width-breakpoint;
+
+  h2 {
+    color: #000;
+    font-family: var(--third-family), sans-serif;
+    font-size: 32px;
+    font-weight: 400;
+  }
+
+  input {
+    border: 1px solid $color-border;
+    position: relative;
+    //top:-4px;
+    border-radius: 51px;
+    font-family: var(--font-family), sans-serif;
+    font-size: 16px;
+    height: (-webkit-fill-available);
+    padding: 0 20px;
+    width: 414px;
+  }
+
+  .search-form {
+        height: 36px;
+    //height: fit-content;
+  }
+
+  .search-btn {
+    background-color: transparent;
+    border: none;
+    height: fit-content;
+    width: fit-content;
+    padding: 0;
+    left: -40px;
+    top: 5px;
+    position: relative;
+
+  }
+
+  .search-suggestions {
+    position: absolute;
+    background: white;
+    border: 1px solid $color-border;
+    border-radius: 8px;
+    width: 414px;
+    max-height: 200px;
+    overflow-y: auto;
+    margin-top: 5px;
+    z-index: 10;
+
+    li {
+      cursor: pointer;
+      //border: 1px solid $color-border;
+      padding: 15px;
+      text-align: left;
+
+      &:hover {
+        background-color: $color-light-gray;
+      }
+    }
+
+    //.suggestion-item {
+    //  padding: 10px;
+    //
+    //  cursor: pointer;
+    //
+    //  &:hover {
+    //    background-color: $color-light-gray;
+    //  }
+    //}
+  }
+}

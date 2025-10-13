@@ -1,6 +1,5 @@
-import React from 'react';
 import './LandingWindow.scss';
-import gippograt from '../../assets/LandingCards/Gipocrat.png'
+import gippograt from '../../../assets/LandingCards/Gipocrat.png'
 
 export default function LandingWindow() {
     return (<>

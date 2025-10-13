@@ -2,7 +2,7 @@ export const DataActions = [
     {
         title: "Art Exhibition: Modern Masterpieces",
         description: "Discover stunning works from contemporary artists at the annual art exhibition.",
-        imageUrl: "https://images.unsplash.com/photo-1506744038136-46273834b3fb",
+        imageUrl: "https://medarchive27.pythonanywhere.com/media/загруженное.png",
         tags: ["Art", "Exhibition", "Modern"],
         author: "Sophie Turner",
         date: [12, 4, 2024]
@@ -10,7 +10,7 @@ export const DataActions = [
     {
         title: "Nature: Wonders of the Forest",
         description: "Explore the beauty and diversity of forest ecosystems around the world.",
-        imageUrl: "https://images.unsplash.com/photo-1465101046530-73398c7f28ca",
+        imageUrl: "https://medarchive27.pythonanywhere.com/media/event_images/События_молочная_железа.png",
         tags: ["Nature", "Forest", "Wildlife"],
         author: "David Attenborough",
         date: [8, 4, 2024]
@@ -18,7 +18,7 @@ export const DataActions = [
     {
         title: "Space: New Discoveries",
         description: "Scientists reveal new findings about distant galaxies and cosmic phenomena.",
-        imageUrl: "https://images.unsplash.com/photo-1446776811953-b23d57bd21aa",
+        imageUrl: "https://medarchive27.pythonanywhere.com/media/event_images/События_при_гипотиреозе_и_неонталогии_.png",
         tags: ["Space", "Science", "Discovery"],
         author: "Neil Armstrong",
         date: [2, 4, 2024]

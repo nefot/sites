@@ -19,7 +19,13 @@
     padding: 40px;
     width: calc($width-breakpoint + 40vh);
 
-
+    h1 {
+      height: fit-content;
+      margin: 0;
+      font-family: var(--third-family), serif;
+      font-weight: 700;
+      //font-size: 20px;
+    }
   }
 
   &-section {

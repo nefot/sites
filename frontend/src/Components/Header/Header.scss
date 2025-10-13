@@ -2,12 +2,11 @@
 @import '../../variables';
 
 
-
 .header {
 
   align-items: center;
-  background-color: transparent;
-  color: var(--header-color, #fff);
+  background-color: var(--header-bg);
+  color: var(--header-color, #{$color-white});
   height: $header-height;
   position: relative;
   width: (-webkit-fill-available);
@@ -35,7 +34,7 @@
 
   // Логотип
   &__logo {
-    color: var(--header-logo-color, #fff);
+    color: var(--header-logo-color, #{$color-white});
     font-family: var(--third-family), sans-serif;
     font-size: 30px;
     font-weight: 600;
@@ -56,7 +55,7 @@
         background: transparent;
 
         border: 2px solid transparent;
-        color: var(--header-link-color, #fff);
+        color: var(--header-link-color, #{$color-white});
         font-size: 16px;
         font-weight: 400;
         height: (-webkit-fill-available);
@@ -67,19 +66,19 @@
         width: (-webkit-fill-available);
 
 
-
       }
-      :hover{
+
+      :hover {
         opacity: 100% !important;
         transition: 0.3s;
       }
 
-       .--active {
-            opacity: 100%;
-            border-bottom: 2px solid var(--header-link-color, #fff);
-            padding-bottom: 4px;
-            transition: all 0.3s ease;
-        }
+      .--active {
+        opacity: 100%;
+        border-bottom: 2px solid var(--header-link-color, #{$color-white});
+        padding-bottom: 4px;
+        transition: all 0.3s ease;
+      }
     }
 
 
@@ -107,7 +106,7 @@
 
   // Модификатор для белой темы
   &--light {
-    --header-bg: #fff;
+    --header-bg: #{$color-white};
     --header-color: #222;
     --header-logo-color: #222;
     --header-link-color: #222;

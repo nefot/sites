@@ -1,6 +1,6 @@
 
 import Button from "../Button/Button.tsx";
-import { NewsCard } from "../News/News.tsx";
+import { NewsCard } from "../Landing/News/News.tsx";
 import {difference} from "../datas/data.ts";
 import {useState} from "react";
 import {DataActions} from "../datas/dataActions.ts";

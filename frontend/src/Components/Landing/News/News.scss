@@ -1,4 +1,4 @@
-@import '../../variables';
+@use '../../../variables' as *;
 
 .flex-justify-space-between {
   display: flex;
@@ -16,14 +16,14 @@
     text-align: justify;
     font-weight: 300;
     font-size: 2rem;
-    color: $color-card-text;
+    color: $color-gray;
     margin: 0;
   }
 
   button {
     background-color: transparent;
     border: none;
-    color: $color-card-text;
+    color: $color-gray;
     box-shadow: none;
     font-size: 13.33px;
 
@@ -33,7 +33,7 @@
     }
 
     &:active {
-      color: $color-card2;
+      color: $color-green;
       background-color: transparent;
     }
 
@@ -75,23 +75,23 @@
 
     .tag {
       padding: $tag-padding;
-      border: 1px solid $color-tag-border;
+      border: 1px solid $color-gray;
       border-radius: $tag-border-radius;
       font-size: 13.33px;
       font-weight: 500;
       margin: 0;
-      color: $color-tag-text;
+      color: $color-gray;
 
 
       &:hover {
         background-color: $color-tag-hover-bg;
-        border: 1px solid $color-tag-border-hover;
+        border: 1px solid $color-green;
         cursor: pointer;
       }
 
       &:active {
-        background-color: $color-card2;
-        border: 1px solid $color-tag-border-hover;
+        background-color: $color-green;
+        border: 1px solid $color-green;
         cursor: pointer;
         color: white;
       }

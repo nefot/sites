@@ -1,24 +1,35 @@
 /*
-Error: Undefined variable: "$color-card-bg".
-        on line 7 of Button.scss
+Error: Undefined variable: "$color-gray".
+        on line 19 of News.scss
 
-2: 
-3: .custom-btn {
-4:   font-family: 'Montserrat', system-ui, Avenir, Helvetica, Arial, sans-serif;
-5:   font-size: 1rem;
-6:   font-weight: 500;
-7:   background: $color-card-bg;
-8:   color: $color-green;
-9:   border: 1px solid $color-green;
-10:   border-radius: $btn-border-radius;
-11:   padding: $btn-padding;
-12:   box-shadow: $btn-shadow;
+14:   h1, h2, h3, h4, h5, h6 {
+15:     font-family: 'Source Serif Pro', serif !important;
+16:     text-align: justify;
+17:     font-weight: 300;
+18:     font-size: 2rem;
+19:     color: $color-gray;
+20:     margin: 0;
+21:   }
+22: 
+23:   button {
+24:     background-color: transparent;
 
 Backtrace:
-Button.scss:7
+News.scss:19
 /var/lib/gems/3.1.0/gems/sass-3.7.4/lib/sass/script/tree/variable.rb:49:in `_perform'
 /var/lib/gems/3.1.0/gems/sass-3.7.4/lib/sass/script/tree/node.rb:50:in `perform'
 /var/lib/gems/3.1.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:398:in `visit_prop'
+/var/lib/gems/3.1.0/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:36:in `visit'
+/var/lib/gems/3.1.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
+/var/lib/gems/3.1.0/gems/sass-3.7.4/lib/sass/stack.rb:79:in `block in with_base'
+/var/lib/gems/3.1.0/gems/sass-3.7.4/lib/sass/stack.rb:135:in `with_frame'
+/var/lib/gems/3.1.0/gems/sass-3.7.4/lib/sass/stack.rb:79:in `with_base'
+/var/lib/gems/3.1.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:158:in `visit'
+/var/lib/gems/3.1.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:440:in `block (2 levels) in visit_rule'
+/var/lib/gems/3.1.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:440:in `map'
+/var/lib/gems/3.1.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:440:in `block in visit_rule'
+/var/lib/gems/3.1.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:179:in `with_environment'
+/var/lib/gems/3.1.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:438:in `visit_rule'
 /var/lib/gems/3.1.0/gems/sass-3.7.4/lib/sass/tree/visitors/base.rb:36:in `visit'
 /var/lib/gems/3.1.0/gems/sass-3.7.4/lib/sass/tree/visitors/perform.rb:158:in `block in visit'
 /var/lib/gems/3.1.0/gems/sass-3.7.4/lib/sass/stack.rb:79:in `block in with_base'
@@ -62,4 +73,4 @@ Button.scss:7
 body:before {
   white-space: pre;
   font-family: monospace;
-  content: "Error: Undefined variable: \"$color-card-bg\".\A         on line 7 of Button.scss\A \A 2: \A 3: .custom-btn {\A 4:   font-family: 'Montserrat', system-ui, Avenir, Helvetica, Arial, sans-serif;\A 5:   font-size: 1rem;\A 6:   font-weight: 500;\A 7:   background: $color-card-bg;\A 8:   color: $color-green;\A 9:   border: 1px solid $color-green;\A 10:   border-radius: $btn-border-radius;\A 11:   padding: $btn-padding;\A 12:   box-shadow: $btn-shadow;"; }
+  content: "Error: Undefined variable: \"$color-gray\".\A         on line 19 of News.scss\A \A 14:   h1, h2, h3, h4, h5, h6 {\A 15:     font-family: 'Source Serif Pro', serif !important;\A 16:     text-align: justify;\A 17:     font-weight: 300;\A 18:     font-size: 2rem;\A 19:     color: $color-gray;\A 20:     margin: 0;\A 21:   }\A 22: \A 23:   button {\A 24:     background-color: transparent;"; }

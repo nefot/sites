@@ -1,8 +1,9 @@
-@import '../../variables';
+@use '../../../variables' as *;
+@use 'sass:math';
 
 .landing-window {
   height: 100vh;
-  background: #282828;
+  background: $color-bg;
 
   //background:
   position: absolute;
@@ -29,7 +30,7 @@
     justify-content: center;
 
     h1, h2, h3, h4, h5, h6, p, span, a, li, div, em {
-      color: #fff;
+      color: $color-white;
     }
   }
 
@@ -61,7 +62,7 @@
     max-width: 330.71px;
     font-size: 40px;
     height: fit-content;
-    color: #fff;
+    color: $color-white;
     text-align: left;
   }
 
@@ -73,7 +74,7 @@
     font-style: italic;
     font-weight: 400;
     font-size: 24px;
-    color: #fff;
+    color: $color-white;
 
   }
 
@@ -88,7 +89,7 @@
     font-family: var(--third-family);
     font-weight: 300;
     font-size: 96px;
-    color: #fff;
+    color: $color-white;
   }
 
   &__decor-right {
@@ -126,20 +127,20 @@ $purple: #3b3d54;
 
 $total: 100;
 @for $i from 1 through $total {
-  $scale:random(2) - .4;
+  $scale: math.random(2) - .4;
 
   .svg:nth-child(#{$i}){
-    left:random(120) * 1% - 20;
-    animation: raise#{$i} 6 + random(15) +s linear infinite;
-    animation-delay:random(5) - 5 + s;
-    transform: scale(.3 * $i - .6) rotate(random(360) + deg);
+    left: math.random(120) * 1% - 20;
+    animation: raise#{$i} 6 + math.random(15) +s linear infinite;
+    animation-delay: math.random(5) - 5 + s;
+    transform: scale(.3 * $i - .6) rotate(math.random(360) + deg);
     z-index: $i - 7;
     filter: blur($i - 6 + px);
 
     @keyframes raise#{$i} {
       to{
         bottom:150vh;
-        transform: scale(.3 * $i - .6) rotate(random(360) + deg);
+        transform: scale(.3 * $i - .6) rotate(math.random(360) + deg);
       }
     }
   }
