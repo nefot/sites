@@ -1,10 +1,12 @@
 @import '../../variables';
-.landing-cards-list{
+
+.landing-cards-list {
   display: flex;
 
   justify-content: space-between;
   gap: 20px;
   margin-top: $landing-cards-padding;
+
   .fit-content {
     > p, h {
       width: fit-content;
@@ -25,7 +27,7 @@
 
   .landing-card {
     //width: 211px;
-    height: -webkit-fill-available;
+    height: (-webkit-fill-available);
 
     justify-content: space-between;
 
@@ -42,22 +44,23 @@
     }
 
   }
+
   @media (max-width: 1100px) {
-  .cards-subscribtions, img{
-    display: none;
-  }
-    h2{
+    .cards-subscribtions, img {
+      display: none;
+    }
+    h2 {
       text-align: left;
       margin: 0;
     }
-    .landing-cards-list-h{
+    .landing-cards-list-h {
       height: 0 !important;
     }
-    .element-card{
+    .element-card {
       gap: 0;
-      width: -webkit-fill-available;
+      width: (-webkit-fill-available);
     }
-    .card{
+    .card {
       gap: 0;
     }
   }

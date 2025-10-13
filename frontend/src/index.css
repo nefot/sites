@@ -27,6 +27,7 @@
 }
 body {
     margin: 0;
+    width: 100%;
     min-width: 320px;
     min-height: 100vh;
     background: #f7f7f7;
@@ -36,7 +37,7 @@ body {
 }
 
 a {
-    color: #1976d2;
+    color: #ffffff;
     text-decoration: none;
     transition: color 0.2s;
 }

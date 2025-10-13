@@ -16,9 +16,9 @@
 }
 
 main {
-  width: 992px;
   margin: auto;
-  max-width: -webkit-fill-available;
+  max-width: (-webkit-fill-available);
+  width: $width-breakpoint;
 }
 
 

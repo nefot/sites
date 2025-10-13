@@ -1,28 +1,33 @@
 .custom-btn {
-    font-family: 'Montserrat', system-ui, Avenir, Helvetica, Arial, sans-serif;
-    font-size: 1rem;
-    font-weight: 500;
-    background: #fff;
-    color: #1fec00;
-    border: 1px solid #1fec00;
-    border-radius: 15px;
-    padding: 0.6em 1.4em;
-    box-shadow: 0 2px 8px rgba(25, 118, 210, 0.08);
-    cursor: pointer;
-    transition: background 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
-    outline: none;
-    margin: 4px 20px;
-}
+  font-family: 'Montserrat', system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 500;
+  background: #ffffff;
+  color: #10AD76;
+  border: 1px solid #10AD76;
+  border-radius: 8.12px;
+  padding: 0.6em 1.4em;
+  box-shadow: 0 2px 8px rgba(25, 118, 210, 0.08);
+  cursor: pointer;
+  width: fit-content;
+  height: min-content;
+  transition: background 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+  outline: none; }
 
-.custom-btn:hover,
-.custom-btn:focus {
-    background: #f0f7ff;
-    color:#333333;
+.width-100 {
+  width: 100%;
+  margin: 0; }
 
-}
+.custom-btn:hover {
+  background: #ddfff5;
+  color: #10AD76; }
+
+.custom-btn.active:hover {
+  background: #4ce8b2;
+  color: #fff; }
 
 .custom-btn:active, .active {
-    background: linear-gradient(90deg, #43ea7c 0%, #40b601 100%);
-    color: #fff;
-    border: none;
-}
+  background: #10AD76;
+  color: #fff; }
+
+/*# sourceMappingURL=Button.css.map */

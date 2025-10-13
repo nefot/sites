@@ -5,27 +5,27 @@
 
 .header {
 
-  width: -webkit-fill-available;
-  height: $header-height;
+  align-items: center;
   background-color: transparent;
-  position: relative;
-  z-index: 100;
   color: var(--header-color, #fff);
+  height: $header-height;
+  position: relative;
+  width: (-webkit-fill-available);
   // Основной контейнер хедера
   //margin-bott/om: 10px;
-  align-items: center;
+  z-index: 100;
 
   &__visibiliytyt-helper {
 
+    align-items: center;
     display: flex;
+    height: (-webkit-fill-available);
     justify-content: space-between;
-    height: -webkit-fill-available;
-    width: 1224px;
+    margin: auto;
+    max-width: (-webkit-fill-available);
     padding-left: 67px;
     padding-right: 67px;
-    margin: auto;
-    max-width: -webkit-fill-available;
-    align-items: center;
+    width: 1224px;
   }
 
   &__container {
@@ -35,10 +35,10 @@
 
   // Логотип
   &__logo {
-    font-family: var(--third-family);
-    font-weight: 600;
-    font-size: 30px;
     color: var(--header-logo-color, #fff);
+    font-family: var(--third-family), sans-serif;
+    font-size: 30px;
+    font-weight: 600;
 
   }
 
@@ -48,23 +48,23 @@
     // ...
     &-list {
 
-      justify-content: space-between;
       display: flex;
       gap: 44px;
+      justify-content: space-between;
 
       button {
         background: transparent;
 
-        width: -webkit-fill-available;
         border: 2px solid transparent;
-        height: -webkit-fill-available;
-        opacity: 60%;
-        text-decoration: none;
-        font-weight: 400;
-        font-size: 16px;
-        text-align: center;
         color: var(--header-link-color, #fff);
+        font-size: 16px;
+        font-weight: 400;
+        height: (-webkit-fill-available);
+        opacity: 60%;
+        text-align: center;
+        text-decoration: none;
         transition: 0.3s;
+        width: (-webkit-fill-available);
 
 
 

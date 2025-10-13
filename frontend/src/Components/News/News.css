@@ -1,0 +1,87 @@
+.flex-justify-space-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; }
+
+.margin-10 {
+  margin: 10px; }
+
+.chapter-title h1, .chapter-title h2, .chapter-title h3, .chapter-title h4, .chapter-title h5, .chapter-title h6 {
+  font-family: 'Source Serif Pro', serif !important;
+  text-align: justify;
+  font-weight: 300;
+  font-size: 2rem;
+  color: #333333;
+  margin: 0; }
+.chapter-title button {
+  background-color: transparent;
+  border: none;
+  color: #333333;
+  box-shadow: none;
+  font-size: 13.33px; }
+  .chapter-title button:hover {
+    cursor: pointer;
+    background-color: transparent; }
+  .chapter-title button:active {
+    color: #10AD76;
+    background-color: transparent; }
+  .chapter-title button:focus {
+    background-color: transparent; }
+
+.news-cards {
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  transition: flex-direction 0.7s cubic-bezier(0.4, 0, 0.2, 1), gap 0.7s cubic-bezier(0.4, 0, 0.2, 1); }
+  .news-cards .news-card {
+    width: 45%; }
+    .news-cards .news-card-subscription {
+      display: flex;
+      width: 100%;
+      justify-content: space-between; }
+    .news-cards .news-card_tags {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      object-fit: cover;
+      flex-wrap: nowrap;
+      gap: 10px; }
+    .news-cards .news-card .tag {
+      padding: 7px 10px;
+      border: 1px solid #333333;
+      border-radius: 39px;
+      font-size: 13.33px;
+      font-weight: 500;
+      margin: 0;
+      color: #333333; }
+      .news-cards .news-card .tag:hover {
+        background-color: #ddfff5;
+        border: 1px solid #10AD76;
+        cursor: pointer; }
+      .news-cards .news-card .tag:active {
+        background-color: #10AD76;
+        border: 1px solid #10AD76;
+        cursor: pointer;
+        color: white; }
+    .news-cards .news-card p {
+      margin: 0;
+      font-size: 16px;
+      font-weight: 500;
+      margin-bottom: auto; }
+  @media (max-width: 1100px) {
+    .news-cards {
+      flex-direction: column;
+      gap: 30px;
+      align-items: stretch; }
+      .news-cards .news-card {
+        width: -webkit-fill-available;
+        max-width: -webkit-fill-available;
+        margin: 0 auto;
+        opacity: 0.97;
+        gap: 15px;
+        transform: translateY(50px); }
+        .news-cards .news-card img {
+          max-height: 400px; } }
+
+/*# sourceMappingURL=News.css.map */
