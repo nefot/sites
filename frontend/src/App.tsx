@@ -3,6 +3,8 @@ import {Difference} from "./Components/sections/difference.tsx";
 import LandingCards from "./Components/Landing_cards/LandingCard.tsx";
 import Header from "./Components/Header/Header.tsx";
 import LandingWindow from "./Components/LandingWindow/LandingWindow.tsx";
+import Footer from "./Components/Footer/Footer.tsx";
+
 
 
 
@@ -19,6 +21,7 @@ function App() {
                 {/*<Section/>*/}
                 <Difference/>
             </main>
+            <Footer/>
         </>
     );
 }
