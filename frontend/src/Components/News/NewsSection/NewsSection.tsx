@@ -16,3 +16,5 @@ export  function NewsLast(NewsLastData: any) {
 
   </>);
 }
+
+export default NewsSection;

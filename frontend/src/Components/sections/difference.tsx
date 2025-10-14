@@ -1,4 +1,3 @@
-
 import Button from "../Button/Button.tsx";
 import { NewsCard } from "../Landing/News/News.tsx";
 import {difference} from "../datas/data.ts";
@@ -31,3 +30,5 @@ export function Difference(){
         </section>
     )
 }
+
+export default Difference;

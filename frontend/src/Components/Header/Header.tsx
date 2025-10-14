@@ -1,41 +1,43 @@
-import { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 import './Header.scss';
 
 const navLinks = [
-    { label: 'Новости', href: '#' ,active:false },
-    { label: 'База', href: '#',active:false  },
-    { label: 'События', href: '#' ,active:false },
+  { label: 'Главная', href: '/', active: false },
+  { label: 'Новости', href: '/news', active: false },
+  { label: 'База', href: '/base', active: false },
+  { label: 'События', href: '/events', active: false },
 ];
 
 interface HeaderProps {
-    is_light?: boolean;
+  is_light?: boolean;
 }
 
 export default function Header({ is_light = true }: HeaderProps) {
-    const [activeIndex, setActiveIndex] = useState(0);
+  const location = useLocation();
 
-    return (
-        <header className={`header${is_light ? ' header--light' : ''}`}>
-            <div className="header__visibiliytyt-helper">
-                <div className="header__logo-container">
-                    <h2 className="header__logo">MedArchive</h2>
-                </div>
-                <nav className="header__nav">
-                    <ul className="header__nav-list">
-                        {navLinks.map((link, idx) => (
-                            <li className="header__nav-item" key={link.label}>
-                                <button
-                                    className={`header__nav-link${activeIndex === idx ? ' --active' : ''} ${link.active? ' --active' : ''}`}
-                                    // href={link.href}
-                                    onClick={() => setActiveIndex(idx)}
-                                >
-                                    {link.label}
-                                </button>
-                            </li>
-                        ))}
-                    </ul>
-                </nav>
-            </div>
-        </header>
-    );
+  return (
+    <header className={`header${is_light ? ' header--light' : ''}`}>
+      <div className="header__visibiliytyt-helper">
+        <div className="header__logo-container">
+          <h2 className="header__logo">MedArchive</h2>
+        </div>
+        <nav className="header__nav">
+          <ul className="header__nav-list">
+            {navLinks.map((link) => (
+              <li className="header__nav-item" key={link.label}>
+                <Link
+                  className={`header__nav-link btn${location.pathname === link.href ? ' --active' : ''}`}
+                  to={link.href}
+                  role="button"
+                  tabIndex={0}
+                >
+                  {link.label}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      </div>
+    </header>
+  );
 }

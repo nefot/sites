@@ -51,21 +51,24 @@
       gap: 44px;
       justify-content: space-between;
 
-      button {
-        background: transparent;
+     .header__nav-item {
+      background: transparent;
 
-        border: 2px solid transparent;
-        color: var(--header-link-color, #{$color-white});
-        font-size: 16px;
-        font-weight: 400;
-        height: (-webkit-fill-available);
-        opacity: 60%;
-        text-align: center;
-        text-decoration: none;
-        transition: 0.3s;
-        width: (-webkit-fill-available);
+      border: 2px solid transparent;
+      color: var(--header-color, #{$color-white});
+      font-size: 16px;
+      font-weight: 400;
+      height: (-webkit-fill-available);
+      opacity: 60%;
+      text-align: center;
+      text-decoration: none;
+      transition: 0.3s;
+      width: (-webkit-fill-available);
 
+      a{
+              color: var(--header-color, #{$color-white});
 
+      }
       }
 
       :hover {
