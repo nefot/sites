@@ -1,0 +1,33 @@
+@import "../../_variables.scss";
+
+$tag-inactive-bg: #F1F1F1;
+$tag-inactive-border: transparent;
+$tag-inactive-color: $color-bg;
+
+.tag {
+  padding: $tag-padding;
+  border: 1px solid $color-gray;
+  border-radius: $tag-border-radius;
+  font-size: 13.33px;
+  font-weight: 500;
+  margin: 0;
+  color: $color-gray;
+
+  &:hover {
+    background-color: $color-tag-hover-bg;
+    color: $color-bg;
+    border: 1px solid $color-green;
+    cursor: pointer;
+  }
+  &:active {
+    background-color: $color-tag-active-hover;
+    color: $color-card-bg;
+    border: 1px solid $color-green;
+  }
+}
+
+.tag--inactive {
+  background: $tag-inactive-bg;
+  border: 1px solid $tag-inactive-border;
+  color: $tag-inactive-color;
+}

@@ -14,7 +14,9 @@
     font-size: 32px;
     font-weight: 400;
   }
-
+  svg{
+    color: #0f63ee;
+  }
   input {
     border: 1px solid $color-border;
     position: relative;
@@ -75,5 +77,6 @@
     //    background-color: $color-light-gray;
     //  }
     //}
+
   }
 }

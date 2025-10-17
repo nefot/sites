@@ -3,16 +3,16 @@
 
 
 .header {
-
+  position: fixed;
   align-items: center;
   background-color: var(--header-bg);
   color: var(--header-color, #{$color-white});
   height: $header-height;
-  position: relative;
+  top: 0;
   width: (-webkit-fill-available);
   // Основной контейнер хедера
   //margin-bott/om: 10px;
-  z-index: 100;
+  z-index: 2100;
 
   &__visibiliytyt-helper {
 

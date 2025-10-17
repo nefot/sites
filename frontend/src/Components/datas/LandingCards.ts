@@ -5,24 +5,27 @@ import base from '../../assets/LandingCards/images/ico2.png'
 
 export const data_landing_cards = [
     {
-        title: "База ",
-        description: "Тут описание текущего элемента и что он означает",
+        title: "База знаний",
+        description: "Протоколы и рекомендации",
         imageUrl: base,
         url: "/base",
-    },    {
+    },
+    {
         title: "Специалистам",
-        description: "Тут описание текущего элемента и что он означает",
+        description: "Инструменты для врачей",
         imageUrl: communityImage,
         url: "/professions",
-    }, {
+    },
+    {
         title: "НПБ",
-        description: "Тут описание текущего элемента и что он означает",
+        description: "Нормативные документы",
         imageUrl: supportImage,
         url: "/news",
-    },{
-        title: "База",
-        description: "Тут описание текущего элемента и что он означает",
+    },
+    {
+        title: "Документы",
+        description: "Формы и бланки",
         imageUrl: filesImage,
         url: "/contacts",
     }
-]
+];

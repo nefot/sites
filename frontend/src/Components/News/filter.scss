@@ -1,0 +1,39 @@
+@import "../../_variables.scss";
+
+
+.filter {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  @include block;
+  //background-color: #4ce8b2;
+  width: -webkit-fill-available;
+  padding: 15px;
+  height: fit-content;
+
+  p {
+    margin: 0;
+    font-family: var(--font-family);
+    font-weight: 600;
+    font-size: 16px;
+    color: #000;
+  }
+
+  .tags-filter {
+    //background-color: #0f63ee;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+
+    .tags-filter-horisontal {
+      display: flex;
+      gap: 10px
+    }
+  }
+  hr {
+    width: -webkit-fill-available;
+    margin: 10px 20px;
+    border: 1px solid $color-border;
+  }
+}

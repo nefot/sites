@@ -1,12 +1,8 @@
 import './News.scss';
-import React from "react";
 import {NewsCardSubscription} from "./NewsCardSubscription.tsx";
 import Button from "../../Button/Button.tsx";
 import {DataNews} from "../../datas/dataNews.ts";
-
-export function Tag({children}: { children: React.ReactNode }) {
-    return <Button className="tag">#{children}</Button>;
-}
+import { Tag } from "../../TagButton/TagButton";
 
 type NewsItem = {
     title: string;
@@ -17,17 +13,16 @@ type NewsItem = {
     date?: number[]; // корректируем тип здесь как number[]
 };
 
-export function NewsCard({ className, data = DataNews}: { className: string , data?: NewsItem[]}) {
+
+
+export function NewsCard({ data = DataNews}: {  data?: NewsItem[]}) {
     function handleClick(text: string) {
         console.log('Button clicked', text);
     }
 
     return (
         <>
-            <div className="news-card-header flex-justify-space-between margin-10 chapter-title">
-                <h3>{className}</h3>
-                <Button onClick={() => handleClick('All')} active={false}>показать все</Button>
-            </div>
+
             <div className="news-cards ">
                 {data.map((item: NewsItem, idx: number) => {
 

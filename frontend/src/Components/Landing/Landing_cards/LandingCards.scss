@@ -3,7 +3,7 @@
 .landing-cards-list {
   display: flex;
 
-  justify-content: space-between;
+  justify-content: center;
   gap: 20px;
   margin-top: $landing-cards-padding;
 
@@ -19,17 +19,19 @@
 
   .element-card {
     gap: 10px;
+    
+    width: -webkit-fill-available;
 
     button {
-      width: 100%;
+      width: -webkit-fill-available;
     }
   }
 
   .landing-card {
     //width: 211px;
     height: (-webkit-fill-available);
-
-    justify-content: space-between;
+    width:40%;
+    justify-content: flex-start;
 
     img {
       width: 117px;

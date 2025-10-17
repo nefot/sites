@@ -1,0 +1,101 @@
+@import "../../_variables.scss";
+
+
+.filter-news {
+
+  display: flex;
+  width: $width-breakpoint;
+  margin: auto auto 20px auto;
+  gap: 16px;
+  //background-color: #0f63ee;
+
+  .last-news-container {
+
+    //background-color: #3b3d54;
+    display: grid;
+
+    //display: grid;
+    gap: 10px;
+    //height: 100vh;
+    grid-template-rows: 177px 177px;
+    grid-template-columns: 320px 320px;
+
+    /* ! */
+    justify-content: center;
+
+    .last-news-item {
+      border: 1px solid #e2e1e1;
+      border-radius: 10px;
+      box-shadow: 0 4px 9px 0 rgba(0, 0, 0, 0.03);
+      background: #fff;
+      //padding: 20px;
+      // стили для отдельной новости
+      //background-color: #2d3484;
+
+      .last-news-item-container {
+        display: flex;
+        flex-direction: column;
+        padding: 10px 21px;
+        gap: 20px;
+        justify-content: space-between;
+
+        p {
+          padding: 0;
+          margin: 0;
+        }
+
+        div {
+          display: flex;
+          gap: 11px;
+          align-items: center;
+          justify-content: flex-start;
+
+          p {
+            margin: 0;
+            font-family: var(--font-family), sans-serif;
+            font-weight: 600;
+            font-size: 36px;
+            color: #f00;
+          }
+
+          div {
+            display: flex;
+            flex-direction: column;
+            gap: 0px;
+            text-align: left;
+            align-items: flex-start;
+
+            p {
+              margin: 0;
+              font-family: var(--font-family), sans-serif;
+              font-weight: 400;
+              font-size: 13px;
+              color: #000;
+            }
+          }
+        }
+      }
+
+    }
+
+    .last-news-item:hover {
+      cursor: pointer;
+      box-shadow: $card-shadow;
+      border: 1px solid $color-green;
+    }
+
+    .last-news-item:active {
+      background-color: $color-tag-active-hover;
+    }
+  }
+
+  // .Filters (если появятся классы для фильтров)
+
+  .date-black {
+    color: $color-bg !important;
+  }
+
+  .date-red {
+    color: red;
+  }
+}

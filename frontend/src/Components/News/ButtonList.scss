@@ -1,0 +1,58 @@
+@import "../../_variables.scss";
+
+.button-list {
+  display: flex;
+  align-items: center;
+  //gap: 6px;
+  .list-button {
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    align-items: center;
+    justify-content: space-between;
+    //padding: $btn-padding;
+    //padding-right: 30px;
+    border-radius: $btn-border-radius;
+    background: $color-white;
+    border: 1px solid $color-border;
+    color: $color-black;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s, border 0.2s;
+    box-shadow: $btn-shadow;
+    outline: none;
+
+    &:hover {
+      background: $color-tag-hover-bg;
+      border: 1px solid $color-green;
+    }
+  }
+
+}
+
+.sort-dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 140px;
+  background: $color-white;
+  border: 1px solid $color-border;
+  border-radius: $btn-border-radius;
+  box-shadow: $btn-shadow;
+  z-index: 10;
+  margin-top: 4px;
+  padding: 4px 0;
+}
+
+.sort-option {
+  padding: 8px 16px;
+  cursor: pointer;
+  font-size: 14px;
+  color: $color-black;
+  transition: background 0.2s;
+
+  &:hover {
+    background: $color-tag-hover-bg;
+  }
+}

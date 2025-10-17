@@ -12,6 +12,13 @@ $color-plus: #183e31;
 $color-tag-hover-bg: #ddfff5;
 $color-tag-active-hover: #4ce8b2;
 
+@mixin block {
+  background-color: $color-card-bg;
+  border: 1px solid $color-border;
+  border-radius: $card-border-radius;
+  box-shadow: $card-shadow;
+}
+
 // Тени
 $card-shadow: 0 4px 12px rgba(51, 51, 51, 0.1);
 $btn-shadow: 0 2px 8px rgba(25, 118, 210, 0.08);
