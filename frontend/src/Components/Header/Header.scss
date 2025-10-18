@@ -3,12 +3,12 @@
 
 
 .header {
-  position: fixed;
+  position: relative;
   align-items: center;
   background-color: var(--header-bg);
   color: var(--header-color, #{$color-white});
   height: $header-height;
-  top: 0;
+  //top: 0;
   width: (-webkit-fill-available);
   // Основной контейнер хедера
   //margin-bott/om: 10px;
@@ -51,24 +51,24 @@
       gap: 44px;
       justify-content: space-between;
 
-     .header__nav-item {
-      background: transparent;
+      .header__nav-item {
+        background: transparent;
 
-      border: 2px solid transparent;
-      color: var(--header-color, #{$color-white});
-      font-size: 16px;
-      font-weight: 400;
-      height: (-webkit-fill-available);
-      opacity: 60%;
-      text-align: center;
-      text-decoration: none;
-      transition: 0.3s;
-      width: (-webkit-fill-available);
+        border: 2px solid transparent;
+        color: var(--header-color, #{$color-white});
+        font-size: 16px;
+        font-weight: 400;
+        height: (-webkit-fill-available);
+        opacity: 60%;
+        text-align: center;
+        text-decoration: none;
+        transition: 0.3s;
+        width: (-webkit-fill-available);
 
-      a{
-              color: var(--header-color, #{$color-white});
+        a {
+          color: var(--header-color, #{$color-white});
 
-      }
+        }
       }
 
       :hover {

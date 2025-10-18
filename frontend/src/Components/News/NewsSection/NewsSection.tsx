@@ -9,7 +9,10 @@ export function NewsSection() {
         <>
             <NewsTitle/>
             <LastNews data={lastNewsData}/>
-            <NewsCard data={DataNews}/>
+            <div className="window-divider">
+                <NewsCard data={DataNews} type="horizontal"/>
+            </div>
+
         </>
     );
 }

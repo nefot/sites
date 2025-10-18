@@ -7,7 +7,7 @@ type NewsCardSubscriptionProps = {
 export function NewsCardSubscription({children, date = [1,2,2]}: NewsCardSubscriptionProps) {
     // date: [day, month, year]
     return (
-        <div className="news-card-subscription">
+        <div className="news-card-subscription" style={{justifyContent: "space-between"}}>
             <div>
                 {date[0]}.{date[1]}.{date[2]}
             </div>
