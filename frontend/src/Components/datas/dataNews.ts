@@ -21,5 +21,4 @@ export const DataNews = [
         author: "John Doe",
         date: [5, 3, 2024]
     },
-
 ]

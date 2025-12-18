@@ -4,19 +4,46 @@ import "./ButtonList.scss";
 import type {lastNewsDataType} from '../../types/lastNewsDataType.ts';
 
 import {Tag} from "../TagButton/TagButton";
-import React, {useRef, useLayoutEffect, useState} from "react";
+import React, {useRef, useLayoutEffect, useState, useMemo, useEffect} from "react";
 import { useNavigate } from "react-router-dom";
 
 
 
 
-export default function LastNews({data}: { data: lastNewsDataType[] }) {
-    const navigate = useNavigate();
+export default function LastNews({data, onSortChange}: { data: lastNewsDataType[], onSortChange?: (opt: string) => void }) {
+     const navigate = useNavigate();
+     const [sortOption, setSortOption] = useState<string>("Сначала новые");
+
+     const sorted = useMemo(() => {
+         if (!Array.isArray(data)) return [] as lastNewsDataType[];
+         const copy = [...data];
+         const toNumber = (d: number[] = [1,1,1970]) => {
+             // date format [day, month, year]
+             const [day, month, year] = d;
+             return new Date(year, (month || 1) - 1, day || 1).getTime();
+         };
+         if (sortOption === 'Сначала новые') {
+             copy.sort((a, b) => toNumber(b.date) - toNumber(a.date));
+         } else if (sortOption === 'Сначала старые') {
+             copy.sort((a, b) => toNumber(a.date) - toNumber(b.date));
+         } else if (sortOption === 'По алфавиту') {
+             copy.sort((a, b) => (a.title || '').localeCompare(b.title || ''));
+         }
+         return copy;
+     }, [data, sortOption]);
+
+    // Если внешний компонент передал onSortChange — синхронизируем выбор
+    useEffect(() => {
+        if (onSortChange) {
+            onSortChange(sortOption);
+        }
+    }, [sortOption, onSortChange]);
+
     return (
         <>
             <div className="filter-news">
                 <div className="last-news-container">
-                    {data.map((item: lastNewsDataType) => (
+                    {sorted.map((item: lastNewsDataType) => (
                         <div className="last-news-item" key={item.id}>
                             <div className="last-news-item-container" onClick={() => navigate(`/news/${item.id}`)} style={{cursor: 'pointer'}}>
                                 <div>
@@ -32,14 +59,14 @@ export default function LastNews({data}: { data: lastNewsDataType[] }) {
 
                     ))}
                 </div>
-                <Filters/>
+                <Filters onSortChange={(opt) => setSortOption(opt)} />
 
             </div>
         </>
     )
 }
 
-export function ButtonList(text: string, sortOptions: string[] = []) {
+export function ButtonList(text: string, sortOptions: string[] = [], onSelect?: (option: string) => void) {
     const [open, setOpen] = useState(false);
     const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -60,8 +87,7 @@ export function ButtonList(text: string, sortOptions: string[] = []) {
 
     const handleSelect = (option: string) => {
         setOpen(false);
-        // Заглушка: здесь будет обраб��тка сортировки
-        alert(`Выбрана сортировка: ${option}`);
+        if (onSelect) onSelect(option);
     };
     return (
         <div className="button-list" style={{position: 'relative'}} ref={dropdownRef}>
@@ -95,7 +121,7 @@ const sortOptions = [
     "По алфавиту"
 ];
 
-export function Filters() {
+export function Filters({ onSortChange }: { onSortChange?: (option: string) => void }) {
     const containerRef = useRef<HTMLDivElement>(null);
     const hiddenRef = useRef<HTMLDivElement>(null);
     const [rows, setRows] = useState<string[][]>([]);
@@ -154,7 +180,7 @@ export function Filters() {
                 ))}
                 <hr/>
             </div>
-            {ButtonList("Сортировка", sortOptions)}
+            {ButtonList("Сортировка", sortOptions, onSortChange)}
         </div>
     );
 }

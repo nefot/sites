@@ -18,9 +18,17 @@ export class News extends BaseEntity  {
   @Column({ nullable: true })
   @IsOptional()
   @IsString()
-  image?: string; // путь к файлу изображения
+  imageUrl?: string; // путь к файлу изображения
+
+  @Column('simple-json', { nullable: true })
+  tags?: string[];
+
+  @Column()
+  author: string;
+
+  @Column('simple-json')
+  date: number[];
 
   @CreateDateColumn()
-  created_at: Date;
+  createdAt: Date;
 }
-

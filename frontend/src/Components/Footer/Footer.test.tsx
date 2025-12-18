@@ -1,5 +1,4 @@
 // Footer.test.tsx
-import React from 'react';
 
 export default function Footer() {
     // ...здесь будет логика Footer...
@@ -9,4 +8,3 @@ export default function Footer() {
         </footer>
     );
 }
-

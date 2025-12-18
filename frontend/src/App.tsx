@@ -6,6 +6,8 @@ import LandingCards from './Components/Landing/Landing_cards/LandingCard.tsx';
 import Difference from './Components/sections/difference.tsx';
 import NewsSection from './Components/News/NewsSection/NewsSection';
 import './App.scss';
+import Login from './Login';
+import Register from './Register';
 
 function App() {
     return (
@@ -37,6 +39,25 @@ function App() {
                     }
                 />
 
+                <Route path="/login" element={
+                    <>
+                        <Header is_light={true}/>
+                        <main>
+                            <Login />
+                        </main>
+                        <Footer />
+                    </>
+                } />
+
+                <Route path="/register" element={
+                    <>
+                        <Header is_light={true}/>
+                        <main>
+                            <Register />
+                        </main>
+                        <Footer />
+                    </>
+                } />
 
 
                 <Route path='/base'

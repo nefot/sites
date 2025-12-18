@@ -1,4 +1,4 @@
-import { Entity, PrimaryGeneratedColumn, Column, BaseEntity } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, BaseEntity, CreateDateColumn } from 'typeorm';
 
 @Entity()
 export class User  extends BaseEntity {
@@ -8,10 +8,12 @@ export class User  extends BaseEntity {
   @Column({ unique: true })
   email: string;
 
+  @Column({ unique: true })
+  username: string;
+
   @Column()
-  name: string;
+  password: string;
 
-  @Column({ nullable: true })
-  age?: number;
+  @CreateDateColumn()
+  createdAt: Date;
 }
-
