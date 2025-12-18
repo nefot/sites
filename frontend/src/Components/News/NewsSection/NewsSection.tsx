@@ -1,4 +1,3 @@
-import React, { useState, useEffect } from 'react';
 import {NewsTitle} from './NewsTitle.tsx';
 import LastNews from "../LastNews.tsx";
 import {NewsCard} from "../../Landing/News/News.tsx";
@@ -7,19 +6,37 @@ import {lastNewsData} from "../../datas/LastNewsData.tsx";
 import { useAuth } from '../../../context/AuthContext';
 import type { NewsItem } from '../../Landing/News/NewsItem.tsx';
 import { authAPI } from '../../../services/api';
+import React, { useState, useEffect, useMemo } from 'react';
+import { useLocation } from 'react-router-dom';
 
 export function NewsSection() {
     const auth = useAuth();
+    const location = useLocation();
     const [news, setNews] = useState<NewsItem[]>([]);
-    const [loading, setLoading] = useState(false);
     const [showForm, setShowForm] = useState(false);
     const [form, setForm] = useState({ title: '', description: '', imageUrl: '', tags: '' });
     const [error, setError] = useState<string>('');
+    const [sortOption, setSortOption] = useState<string>('Сначала новые');
+    const [searchTerm, setSearchTerm] = useState<string>('');
+
+    // Если в URL есть параметр q, используем его как начальный термин поиска
+    useEffect(() => {
+        try {
+            const params = new URLSearchParams(location.search);
+            const q = params.get('q') || '';
+            if (q) {
+                // q может быть закодированным, декодируем
+                const decoded = decodeURIComponent(q);
+                setSearchTerm(decoded);
+            }
+        } catch (err) {
+            // ignore
+        }
+    }, [location.search]);
 
     useEffect(() => {
         let mounted = true;
         const load = async () => {
-            setLoading(true);
             try {
                 const data = await authAPI.getNews();
                 if (mounted) {
@@ -31,13 +48,61 @@ export function NewsSection() {
                 setError(e instanceof Error ? e.message : String(e));
                 // fallback to local data
                 setNews(DataNews as NewsItem[]);
-            } finally {
-                if (mounted) setLoading(false);
             }
         };
         load();
         return () => { mounted = false; };
     }, []);
+
+    const sortedNews = useMemo(() => {
+        const source = news.length ? news : (DataNews as NewsItem[]);
+        const copy = [...source];
+        const toTime = (d: number[] = [1,1,1970]) => {
+            const [day, month, year] = d || [1,1,1970];
+            return new Date(year || 1970, ((month || 1) - 1), (day || 1)).getTime();
+        };
+        if (sortOption === 'Сначала новые') {
+            copy.sort((a, b) => toTime((b as any).date) - toTime((a as any).date));
+        }
+        // else if (sortOption === 'Сначала старые') {
+
+            // copy.sort((a, b) => toTime((a as any).date) - toTime((b as any).date));
+        // }
+        else if (sortOption === 'По алфавиту') {
+
+            copy.sort((a, b) => (a.title || '').localeCompare(b.title || ''));
+        }
+        return copy;
+    }, [news, sortOption]);
+
+    // Фильтрация новостей по строке поиска или по тегу (::)
+    const filteredNews = useMemo(() => {
+        const source = (sortedNews && sortedNews.length) ? sortedNews : (DataNews as NewsItem[]);
+        const term = (searchTerm || '').trim();
+        if (!term) return source;
+
+        // Поиск по тегу: префикс ::
+        if (term.startsWith('::')) {
+            const tagQuery = term.replace(/^::\s*/, '').toLowerCase();
+            if (!tagQuery) return source;
+            return source.filter(item => {
+                const tags = (item as any).tags || [];
+                return Array.isArray(tags) && tags.some((t: string) => (t || '').toLowerCase().includes(tagQuery));
+            });
+        }
+
+        // Обычный текстовый поиск по заголовку, описанию и тегам
+        const q = term.toLowerCase();
+        return source.filter(item => {
+            const title = (item as any).title || '';
+            const description = (item as any).description || '';
+            const tags = (item as any).tags || [];
+            const inTitle = title.toLowerCase().includes(q);
+            const inDesc = description.toLowerCase().includes(q);
+            const inTags = Array.isArray(tags) && tags.some((t: string) => (t || '').toLowerCase().includes(q));
+            return inTitle || inDesc || inTags;
+        });
+    }, [sortedNews, searchTerm]);
 
     function handleChange(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
         setForm({ ...form, [e.target.name]: e.target.value });
@@ -78,10 +143,10 @@ export function NewsSection() {
     return (
         <>
             <NewsTitle/>
-            <LastNews data={lastNewsData}/>
-            <div className="window-divider">
-                <NewsCard data={news.length ? news : DataNews as any} type="horizontal"/>
-            </div>
+            <LastNews data={lastNewsData} onSortChange={setSortOption} selectedSort={sortOption} onSearchChange={setSearchTerm} searchValue={searchTerm} />
+             <div className="window-divider">
+                <NewsCard data={filteredNews.length ? filteredNews : (DataNews as any)} type="horizontal"/>
+             </div>
 
             <div style={{ display: 'flex', justifyContent: 'center', marginTop: 20 }}>
                 {auth.user ? (
@@ -109,7 +174,7 @@ export function NewsSection() {
 
         </>
     );
-}
+ }
 
 
-export default NewsSection;
+ export default NewsSection;

@@ -4,46 +4,17 @@ import "./ButtonList.scss";
 import type {lastNewsDataType} from '../../types/lastNewsDataType.ts';
 
 import {Tag} from "../TagButton/TagButton";
-import React, {useRef, useLayoutEffect, useState, useMemo, useEffect} from "react";
+import React, {useRef, useLayoutEffect, useState} from "react";
 import { useNavigate } from "react-router-dom";
 
-
-
-
-export default function LastNews({data, onSortChange}: { data: lastNewsDataType[], onSortChange?: (opt: string) => void }) {
-     const navigate = useNavigate();
-     const [sortOption, setSortOption] = useState<string>("Сначала новые");
-
-     const sorted = useMemo(() => {
-         if (!Array.isArray(data)) return [] as lastNewsDataType[];
-         const copy = [...data];
-         const toNumber = (d: number[] = [1,1,1970]) => {
-             // date format [day, month, year]
-             const [day, month, year] = d;
-             return new Date(year, (month || 1) - 1, day || 1).getTime();
-         };
-         if (sortOption === 'Сначала новые') {
-             copy.sort((a, b) => toNumber(b.date) - toNumber(a.date));
-         } else if (sortOption === 'Сначала старые') {
-             copy.sort((a, b) => toNumber(a.date) - toNumber(b.date));
-         } else if (sortOption === 'По алфавиту') {
-             copy.sort((a, b) => (a.title || '').localeCompare(b.title || ''));
-         }
-         return copy;
-     }, [data, sortOption]);
-
-    // Если внешний компонент передал onSortChange — синхронизируем выбор
-    useEffect(() => {
-        if (onSortChange) {
-            onSortChange(sortOption);
-        }
-    }, [sortOption, onSortChange]);
+export default function LastNews({data, onSortChange, selectedSort, onSearchChange, searchValue}: { data: lastNewsDataType[], onSortChange?: (opt: string) => void, selectedSort?: string, onSearchChange?: (term: string) => void, searchValue?: string }) {
+    const navigate = useNavigate();
 
     return (
         <>
             <div className="filter-news">
                 <div className="last-news-container">
-                    {sorted.map((item: lastNewsDataType) => (
+                    {data.map((item: lastNewsDataType) => (
                         <div className="last-news-item" key={item.id}>
                             <div className="last-news-item-container" onClick={() => navigate(`/news/${item.id}`)} style={{cursor: 'pointer'}}>
                                 <div>
@@ -59,14 +30,14 @@ export default function LastNews({data, onSortChange}: { data: lastNewsDataType[
 
                     ))}
                 </div>
-                <Filters onSortChange={(opt) => setSortOption(opt)} />
+                <Filters selectedOption={selectedSort} onSortChange={onSortChange} onSearchChange={onSearchChange} selectedSearch={searchValue} />
 
             </div>
         </>
     )
 }
 
-export function ButtonList(text: string, sortOptions: string[] = [], onSelect?: (option: string) => void) {
+export function ButtonList(textOrLabel: string, sortOptions: string[] = [], onSelect?: (option: string) => void) {
     const [open, setOpen] = useState(false);
     const dropdownRef = useRef<HTMLDivElement>(null);
 
@@ -92,7 +63,7 @@ export function ButtonList(text: string, sortOptions: string[] = [], onSelect?: 
     return (
         <div className="button-list" style={{position: 'relative'}} ref={dropdownRef}>
             <button className="list-button" onClick={() => setOpen((o) => !o)}>
-                {text}
+                {textOrLabel || 'Сортировка'}
                 <svg width="9" height="6" viewBox="0 0 9 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M8 1.25L4.5 4.75L1 1.25" stroke="black" strokeWidth="1"/>
                 </svg>
@@ -117,70 +88,93 @@ const tags = [
 
 const sortOptions = [
     "Сначала новые",
-    "Сначала старые",
+    // "Сначала старые",
     "По алфавиту"
 ];
 
-export function Filters({ onSortChange }: { onSortChange?: (option: string) => void }) {
-    const containerRef = useRef<HTMLDivElement>(null);
-    const hiddenRef = useRef<HTMLDivElement>(null);
-    const [rows, setRows] = useState<string[][]>([]);
+export function Filters({ onSortChange, selectedOption, onSearchChange, selectedSearch }: { onSortChange?: (option: string) => void, selectedOption?: string, onSearchChange?: (term: string) => void, selectedSearch?: string }) {
+     const containerRef = useRef<HTMLDivElement>(null);
+     const hiddenRef = useRef<HTMLDivElement>(null);
+     const [rows, setRows] = useState<string[][]>([]);
+     const [searchValue, setSearchValue] = useState('');
 
-    // Используем те же теги
+     // Синхронизируем локальное поле поиска с внешним prop-ом (selectedSearch)
+     React.useEffect(() => {
+         if (typeof selectedSearch === 'undefined') return;
+         // Если значение совпадает, ничего не делаем
+         if (selectedSearch === searchValue) return;
+         setSearchValue(selectedSearch);
+     }, [selectedSearch]);
 
-    // Пересчитываем строки при изменении ширины окна или контейнера
-    useLayoutEffect(() => {
-        function recalc() {
-            if (!containerRef.current || !hiddenRef.current) return;
-            const containerWidth = containerRef.current.offsetWidth;
-            // Получаем ширины всех тегов из скрытого контейнера
-            const tagNodes = Array.from(hiddenRef.current.children) as HTMLDivElement[];
-            const tagWidths = tagNodes.map(node => node.offsetWidth);
-            const gap = 10; // если gap другой, поменяйте здесь
-            let currentRow: string[] = [];
-            let currentWidth = 0;
-            const result: string[][] = [];
-            tags.forEach((tag, idx) => {
-                const tagWidth = tagWidths[idx] || 0;
-                if (currentWidth + tagWidth + (currentRow.length > 0 ? gap : 0) > containerWidth) {
-                    if (currentRow.length > 0) result.push(currentRow);
-                    currentRow = [tag];
-                    currentWidth = tagWidth;
-                } else {
-                    if (currentRow.length > 0) currentWidth += gap;
-                    currentRow.push(tag);
-                    currentWidth += tagWidth;
-                }
-            });
-            if (currentRow.length > 0) result.push(currentRow);
-            setRows(result);
-        }
+     // Пересчитываем строки при изменении ширины окна или контейнера
+     useLayoutEffect(() => {
+         function recalc() {
+             if (!containerRef.current || !hiddenRef.current) return;
+             const containerWidth = containerRef.current.offsetWidth;
+             // Получаем ширины всех тегов из скрытого контейнера
+             const tagNodes = Array.from(hiddenRef.current.children) as HTMLDivElement[];
+             const tagWidths = tagNodes.map(node => node.offsetWidth);
+             const gap = 10; // если gap другой, поменяйте здесь
+             let currentRow: string[] = [];
+             let currentWidth = 0;
+             const result: string[][] = [];
+             tags.forEach((tag, idx) => {
+                 const tagWidth = tagWidths[idx] || 0;
+                 if (currentWidth + tagWidth + (currentRow.length > 0 ? gap : 0) > containerWidth) {
+                     if (currentRow.length > 0) result.push(currentRow);
+                     currentRow = [tag];
+                     currentWidth = tagWidth;
+                 } else {
+                     if (currentRow.length > 0) currentWidth += gap;
+                     currentRow.push(tag);
+                     currentWidth += tagWidth;
+                 }
+             });
+             if (currentRow.length > 0) result.push(currentRow);
+             setRows(result);
+         }
 
-        recalc();
-        window.addEventListener('resize', recalc);
-        return () => window.removeEventListener('resize', recalc);
-    }, []);
+         recalc();
+         window.addEventListener('resize', recalc);
+         return () => window.removeEventListener('resize', recalc);
+     }, []);
 
-    return (
-        <div className="filter">
-            <p>фильтры</p>
-            {/* Скрытый контейнер для измерения ширины тегов */}
-            <div style={{position: 'absolute', visibility: 'hidden', height: 0, overflow: 'hidden'}} ref={hiddenRef}>
-                {tags.map((tag, i) => (
-                    <Tag inactive={true} key={i}>{tag}</Tag>
-                ))}
-            </div>
-            <div className="tags-filter" ref={containerRef}>
-                {rows.map((row, i) => (
-                    <div className="tags-filter-horisontal" key={i}>
-                        {row.map((tag, j) => (
-                            <Tag inactive={true} key={j}>{tag}</Tag>
-                        ))}
-                    </div>
-                ))}
-                <hr/>
-            </div>
-            {ButtonList("Сортировка", sortOptions, onSortChange)}
-        </div>
-    );
-}
+     function handleSearchChange(e: React.ChangeEvent<HTMLInputElement>) {
+         const v = e.target.value;
+         setSearchValue(v);
+         if (onSearchChange) onSearchChange(v);
+     }
+
+     return (
+         <div className="filter">
+             <p>фильтры</p>
+             {/* Скрытый контейнер для измерения ширины тегов */}
+             <div style={{position: 'absolute', visibility: 'hidden', height: 0, overflow: 'hidden'}} ref={hiddenRef}>
+                 {tags.map((tag, i) => (
+                     <Tag inactive={true} key={i}>{tag}</Tag>
+                 ))}
+             </div>
+             <div className="tags-filter" ref={containerRef}>
+                 <div style={{marginBottom: 8}}>
+                     <input
+                         type="text"
+                         placeholder="Поиск (для тегов: ::Карантин)"
+                         value={searchValue}
+                         onChange={handleSearchChange}
+                         className="news-search-input"
+                         style={{width: '100%', padding: '6px 8px', boxSizing: 'border-box'}}
+                     />
+                 </div>
+                 {rows.map((row, i) => (
+                     <div className="tags-filter-horisontal" key={i}>
+                         {row.map((tag, j) => (
+                             <Tag inactive={true} key={j}>{tag}</Tag>
+                         ))}
+                     </div>
+                 ))}
+                 <hr/>
+             </div>
+             {ButtonList(selectedOption || 'Сортировка', sortOptions, onSortChange)}
+         </div>
+     );
+ }

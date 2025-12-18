@@ -101,7 +101,10 @@
   transition: flex-direction 0.7s cubic-bezier(0.4, 0, 0.2, 1), gap 0.7s cubic-bezier(0.4, 0, 0.2, 1);
 
   .news-card {
+    z-index: 0 !important;
+
    .news-card-text{
+
      display: flex;
         flex-direction: column;
     gap: 10px;
